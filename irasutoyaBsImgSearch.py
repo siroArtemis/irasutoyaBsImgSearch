@@ -17,7 +17,7 @@ import requests
 # プロジェクトのルートパスを定義
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-# データ保存フォルダのパスを直接指定
+# データ保存フォルダのパスを指定
 dataDir = os.path.join(PROJECT_ROOT, 'data')
 
 if not os.path.exists(dataDir):
