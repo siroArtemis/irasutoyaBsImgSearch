@@ -25,5 +25,3 @@
    python script.py https://www.irasutoya.com/search/label/%E6%A9%9F%E6%A2%B0
    ````
 After execution, the images on the page with the given URL will be saved in the `data` folder.
-
-Translated with DeepL.com (free version)
