@@ -11,13 +11,6 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 import requests
 
 # ---------------------------------
-# パラメーター
-# ---------------------------------
-
-args = sys.argv
-searchUrl = args[0]
-
-# ---------------------------------
 # 初期処理
 # ---------------------------------
 
@@ -58,7 +51,7 @@ def waitForPageLoad(driver, timeout=30):
         print(f"ページロード待機中にエラーが発生しました: {e}")
 
 def collectImageLinks(driver, waitTime, url, maxLinks=1000):
-    """いらすとやから画像リンクを収集"""
+    """指定されたURLから画像リンクを収集"""
     driver.get(url)
     waitForPageLoad(driver)
     imageLinks = set()
@@ -113,19 +106,20 @@ def downloadImage(url, folderPath):
     except Exception as e:
         print(f"画像のダウンロード中にエラーが発生しました: {e}")
 
-def removeIllegalCharacters(value):
-    """Excelで使用できない文字を削除"""
-    if isinstance(value, str):
-        return re.sub(r"[\x00-\x1F\x7F]", "", value)
-    return value
-
 def main():
+    # コマンドライン引数からURLを取得
+    if len(sys.argv) < 2:
+        print("使用法: python script.py <URL>")
+        sys.exit(1)
+    
+    searchUrl = sys.argv[1]
+
     driver, waitTime = initDriver()
     if not driver:
         return
 
     try:
-        print("画像リンクを収集中...")
+        print(f"画像リンクを収集中: {searchUrl}")
         imageLinks = collectImageLinks(driver, waitTime, searchUrl, maxLinks=1000)
         print(f"収集した画像リンク数: {len(imageLinks)}")
 
