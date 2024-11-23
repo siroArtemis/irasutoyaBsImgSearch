@@ -19,8 +19,6 @@
 5. **Exit Process**.
    - Close the browser and release resources.
 
---- ......................
-
 ## HOW TO USE
 1. specify the URL as an argument when executing the script.
    ```bash
